@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FoodWorks - Products: <%= controller.action_name %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <% if current_user&.admin? %>
+      <%= render "shared/admin_nav" %>
+    <% else %>
+      <%= render "shared/navbar" %>
+    <% end %>
+
+    <div class="container">
+      <br>
+      <% flash.each do |key, message| %>
+        <p class="alert alert-<%= key %>"><%= message %></p>
+      <% end %>
+    </div>
+
+    <!-- <p style="color: green"><%= flash[:notice] %></p> -->
+
+    <div class="product-container mx-auto">
+      <%= yield %>
+    </div>
+
+    <% unless current_user&.admin? %>
+      <%= render "shared/footer" %>
+    <% end %>
+
+    <div class="d-flex justify-content-end">
+      <%= link_to image_tag("icons/up-arrow.png", size: "60x60" ), "#"%>
+    </div>
+  </body>
+</html>

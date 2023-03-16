@@ -1,0 +1,47 @@
+<div class="row mt-5">
+  <div class="col">
+    <h2 class="mt-3 mb-3"><b>Water, juices, drinks</b></h2>
+  </div>
+</div>
+<div class="row">
+  <% @juices.each do |product| %>
+    <div class="col-2">
+      <ul class="list-inline border border-light">
+        <li><%= image_tag "products/#{product.image_url}", size: "220x220", class: "text-decoration-none" %></li>
+        <li class="ms-3"><%= product.title %>, <%= product.description %></li>
+        <li class="ms-3 mt-3 h3"><b><%= print_price(product.price) %></b></li>
+        <li class="ms-3 mt-3"><i><%= print_stock(product.stock) %></i></li>
+        <li>
+          <%= button_to order_items_path(product_id: product.id), class: "btn btn-success col-12" do %>
+            Add&nbsp;to&nbsp;Cart
+            <%= image_tag("icons/cart_white.png", size: "28x26", class: "ms-3") %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  <% end %>
+</div>
+
+<div class="row mt-5">
+  <div class="col">
+    <h2 class="mt-3 mb-3"><b>Nuts</b></h2>
+  </div>
+</div>
+<div class="row">
+  <% @nuts.each do |product| %>
+    <div class="col-2">
+      <ul class="list-inline border border-light">
+        <li><%= image_tag "products/#{product.image_url}", size: "220x220", class: "text-decoration-none" %></li>
+        <li class="ms-3"><%= product.title %>, <%= product.description %></li>
+        <li class="ms-3 mt-3 h3"><b><%= print_price(product.price) %></b></li>
+        <li class="ms-3 mt-3"><i><%= print_stock(product.stock) %></i></li>
+        <li>
+          <%= button_to order_items_path(product_id: product.id), class: "btn btn-success col-12" do %>
+            Add&nbsp;to&nbsp;Cart
+            <%= image_tag("icons/cart_white.png", size: "28x26", class: "ms-3") %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  <% end %>
+</div>

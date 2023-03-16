@@ -1,0 +1,7 @@
+<div class="text-center">
+  <h1>New Category</h1>
+</div>
+
+<%= turbo_frame_tag "new_category" do %>
+  <%= render "form", category: @category %>
+<% end %>

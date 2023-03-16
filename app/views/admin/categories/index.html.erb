@@ -1,0 +1,15 @@
+<div class="container mt-5">
+  <div class="d-flex justify-content-between">
+    <h1 class="mb-3">List of categories</h1>
+    <div class="mb-3">
+      <%= link_to "+ Add new Category", new_admin_category_path, class: "btn btn-dark",
+                                            data: { turbo_frame: dom_id(Category.new) } %>
+    </div>
+  </div>
+</div>
+
+<%= turbo_frame_tag "new_category" %>
+
+<% @categories.each do |category| %>
+  <%= render partial: "category", locals: { category: } %>
+<% end %>

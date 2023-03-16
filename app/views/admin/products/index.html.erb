@@ -1,0 +1,17 @@
+<div class="container mt-5">
+  <div class="d-flex justify-content-between">
+    <h1 class="mb-3">Products</h1>
+    <div class="mb-3">
+      <%= link_to "Create New Product", new_admin_product_path, class: "btn btn-dark",
+                                          data: { turbo_frame: dom_id(Product.new) } %>
+    </div>
+  </div>
+</div>
+
+<%= turbo_frame_tag "new_product" %>
+<%= turbo_frame_tag "new_category" %>
+
+<%= turbo_frame_tag :products %>
+<% @products.each do |product| %>
+  <%= render partial: "product", locals: { product: } %>
+<% end %>

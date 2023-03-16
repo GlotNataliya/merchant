@@ -1,0 +1,18 @@
+<nav class="navbar navbar-dark bg-blue justify-content-center mt-3" style="color: #e3f2fd;">
+  <form class="d-flex">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>
+  <div class="position-relative ms-5">
+    <% if user_signed_in? && @order.present? %>
+      <%= link_to image_tag("icons/cart.svg", size: "32x28"), order_path(@order) %>
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+          <%= @order.order_items.count %>
+      </span>
+    <% else %>
+      <%= link_to image_tag("icons/cart.svg", size: "32x28"), "#", class: "position-relative" %>
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+    <% end %>
+  </div>
+  <div class="ms-5" style="color: #1f7d63;"><%= print_price(@order&.total) %></div>
+</nav>

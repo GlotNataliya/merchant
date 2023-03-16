@@ -1,0 +1,58 @@
+<div class="row text-center mt-5">
+  <h2 class="mt-4"><b>Feedback</b></h2>
+</div>
+
+<div class="row d-flex justify-content-center">
+  <div class="feedback-form mt-4">
+    <%= form_for @feedback, data: { turbo: false } do |form| %>
+      <% if @feedback.errors.any? %>
+        <div style="color: red">
+          <ul>
+            <% @feedback.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="row">
+        <div class="col-6">
+          <%= form.text_field :name, required: true, class: "form-control form-control-lg bg-light border-0",
+                                                                                      placeholder: "Name" %>
+        </div>
+
+        <div class="col-6">
+          <%= form.email_field :email, autocomplete: "email", required: true,
+                                class: "form-control form-control-lg bg-light border-0", placeholder: "Email" %>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class=”field”>
+          <%= form.text_area :message, class: "form-control form-control-lg bg-light border-0", rows: 4, cols: 40,
+                                            placeholder: "Your question, feedback or request" %>
+        </div>
+      </div>
+
+      <div class="d-none">
+        <%= form.label :nickname %>
+        <%= form.text_field :nickname, hint: "Leave this field blank!" %>
+      </div>
+
+      <div class="row mt-4">
+        <div class="mb-3 d-flex">
+          <%= form.check_box :term, class: "form-check-input" %>
+          <p class="ms-3">I here by confirm that I have read and agree to the terms and conditions
+                                                            offers and</br> privacy policies</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="d-flex justify-content-center">
+          <%= form.submit "Send Message", class: "btn btn-success col-4"  %>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</div>

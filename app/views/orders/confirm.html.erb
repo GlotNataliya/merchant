@@ -1,0 +1,18 @@
+<h1>Please, confirm your order</h1>
+
+<div>
+  <strong>Customer name:</strong> <%= @order.user.full_name %></br>
+  <strong>Order:</strong>
+  <ol>
+    <% @order.order_items.each do |order_item| %>
+      <li>
+        <%= order_item.product.title %></br>
+        <span><i>price:</i> <%= print_price(order_item.product.price) %>,</span>
+        <span><i>quantity:</i> <%= order_item.quantity %></span>
+      </li>
+    <% end %>
+  </ol>
+  <p><strong>Total amount:</strong> <%= print_price(@order.total) %></p>
+</div>
+
+<%= button_to "Confirm Order", "#" %>

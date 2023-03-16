@@ -1,0 +1,41 @@
+<div class="d-flex justify-content-center align-items-center mt-5">
+  <div class="col-md-4 p-5 shadow-sm border rounded-3">
+    <h2 class="text-center mb-4 text-secondary">Sign up</h2>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages" %>
+
+      <div class="mb-3">
+        <%= f.label :full_name, class: "form-label" %><br />
+        <%= f.text_field :full_name, autofocus: true, autocomplete: "email",
+                                  class: "form-control border border-secondary" %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :email, class: "form-label" %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email",
+                                  class: "form-control border border-secondary" %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :password, class: "form-label" %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password", required: true,
+                                        class: "form-control border border-secondary" %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :password_confirmation, class: "form-label" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true,
+                                                      class: "form-control border border-secondary" %>
+      </div>
+
+      <div class="d-grid">
+        <%= f.submit "Sign up", class: "btn btn-secondary" %>
+      </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<% if @user.errors.any? %>
+  <div class="text-danger">
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="text-danger">
+  <ul>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-#{key}">
+        <li><%= value %></li>
+      </div>
+    <% end %>
+  </ul>
+</div>

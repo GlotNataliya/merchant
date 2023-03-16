@@ -1,0 +1,25 @@
+<%= turbo_frame_tag product do %>
+  <div class="container shadow-lg p-5 mb-5 bg-body rounded">
+    <div id="<%= dom_id product %>">
+      <div class="row">
+        <div class="col d-flex align-items-start flex-column">
+          <ul class="list-inline">
+            <li class="h3 p-2 mb-auto">
+              <%= product.title %>, <%= product.description %>
+            </li>
+            <li class="ms-3 mt-3"><b>Price:</b>&nbsp;&nbsp;<%= print_price(product.price) %></li>
+            <li class="ms-3 mt-3"><b><%= print_stock(product.stock) %></b></li>
+          </ul>
+          <div class="p-2">
+            <%= link_to image_tag("icons/editing.png"), edit_admin_product_path(product), class: "btn btn-warning mt-3 me-3" %>
+            <%= link_to image_tag("icons/rubbish.png"), admin_product_path(product),
+            data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-warning mt-3" %>
+          </div>
+        </div>
+        <div class="col text-end">
+          <%= image_tag "products/#{product.image_url}", size: "100x100", class: "text-decoration-none" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
