@@ -1,13 +1,13 @@
 <div class="row mt-5">
   <div class="d-flex gap-3">
     <div class="col  border border-light">
-      <%= image_tag("products/sweet_cake.jpg", alt: "", style: "width:100") %>
+      <%= image_tag unsplash_image_url(size: '690x345', tags: 'desserts') %>
       <h3 class=" mb-3 mt-3">
         <%= link_to "Cakes, desserts, sweet pastries", "#", class: "text-decoration-none link-dark" %>
       </h3>
     </div>
     <div class="col border border-light">
-      <%= image_tag("products/fish.jpg", alt: "", style: "width:100") %>
+      <%= image_tag unsplash_image_url(size: '690x345', tags: 'seafood') %>
       <h3 class=" mb-3 mt-3">
         <%= link_to "Fish, caviar, seafood", "#", class: "text-decoration-none link-dark" %>
       </h3>
@@ -18,22 +18,32 @@
 <div class="row mt-5">
   <div class="d-flex gap-3 border border-light">
     <div class="col">
-      <%= image_tag("products/many_vegetables.jpg", alt: "") %>
+      <%= image_tag unsplash_image_url(size: '451x225', tags: 'Fresh vegetables')  %>
       <h3 class=" mb-3 mt-3">
-        <%= link_to "Banner 3", "#", class: "text-decoration-none link-dark" %>
+        <%= link_to "Vegetables", "#", class: "text-decoration-none link-dark" %>
       </h3>
     </div>
     <div class="col">
-      <%= image_tag("products/berries.jpg", alt: "") %>
+      <%= image_tag unsplash_image_url(size: '451x225', tags: 'berries') %>
       <h3 class=" mb-3 mt-3">
-        <%= link_to "Banner 4", "#", class: "text-decoration-none link-dark" %>
+        <%= link_to "Berries", "#", class: "text-decoration-none link-dark" %>
       </h3>
     </div>
     <div class="col">
-      <%= image_tag("products/steak.jpg", alt: "") %>
+      <%= image_tag unsplash_image_url(size: '451x225', tags: 'meat') %>
       <h3 class=" mb-3 mt-3">
-        <%= link_to "Banner 5", "#", class: "text-decoration-none link-dark" %>
+        <%= link_to "Fresh meat products", "#", class: "text-decoration-none link-dark" %>
       </h3>
     </div>
+  </div>
+</div>
+
+<div class="row mt-5 position-relative">
+  <%= image_tag unsplash_image_url(size: "1408x318", tags: 'homemade baking') %>
+  <div class="position-absolute p-5 m-3">
+    <h2 class="text-white"><b>Title</b></h2>
+    <p class="h4 mt-4 text-white">Handmade sweet masterpieces according to the recipes of our Pastry Chef. Individual desserts,
+                                  variety of fillings, </br> individual approach! Discounts for birthday people.</p>
+    <%= link_to "Learn more", "#", class: "btn btn-success mt-3" %>
   </div>
 </div>
