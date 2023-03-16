@@ -27,58 +27,168 @@ User.create!(
                password_confirmation: "@User1234")
 end
 
-category = Category.create!( name: "Drink")
+category1 = Category.create!( name: "New arrival")
+category2 = Category.create!( name: "Water, juices, drinks")
+category3 = Category.create!( name: "Nuts")
 
-product1 = Product.create!(
+fruit1 = Product.create!(
   title: "Avocado",
   price: Faker::Commerce.price,
   description: "1 pc",
-  image_url: "large_Авокадо.jpg",
+  image_url: "avocado.jpg",
   stock: Faker::Number.between(from: 1, to: 100),
-  category_id: category.id
+  category_id: category1.id
 )
 
-product2 = Product.create!(
+fruit2 = Product.create!(
   title: "Pineapple",
   price: Faker::Commerce.price,
   description: "1 pc",
-  image_url: "large_Ананас.jpg",
+  image_url: "pineapple.jpg",
   stock: Faker::Number.between(from: 1, to: 100),
-  category_id: category.id
+  category_id: category1.id
 )
 
-product3 = Product.create!(
+fruit3 = Product.create!(
   title: "Pear Duchess",
   price: Faker::Commerce.price,
   description: "1 kg",
-  image_url: "large_Груша_дюшес.jpg",
+  image_url: "pear.jpg",
   stock: Faker::Number.between(from: 1, to: 100),
-  category_id: category.id
+  category_id: category1.id
 )
 
-product4 = Product.create!(
+fruit4 = Product.create!(
   title: "Pomegranate",
   price: Faker::Commerce.price,
   description: "1 kg",
-  image_url: "large_Гранат.jpg",
+  image_url: "pomegranate.jpg",
   stock: Faker::Number.between(from: 1, to: 100),
-  category_id: category.id
+  category_id: category1.id
 )
 
-product5 = Product.create!(
+fruit5 = Product.create!(
   title: "Grapefruit",
   price: Faker::Commerce.price,
   description: "1 kg",
-  image_url: "large_Грейпфрут.jpg",
+  image_url: "grapefruit.jpg",
   stock: Faker::Number.between(from: 1, to: 100),
-  category_id: category.id
+  category_id: category1.id
 )
 
-product6 = Product.create!(
+fruit6 = Product.create!(
   title: "Peach",
   price: Faker::Commerce.price,
   description: "1 kg",
-  image_url: "large_Персик.jpg",
+  image_url: "peach.jpg",
   stock: Faker::Number.between(from: 1, to: 100),
-  category_id: category.id
+  category_id: category1.id
+)
+
+juice1 = Product.create!(
+  title: "Banana juice",
+  price: Faker::Commerce.price,
+  description: "1 liter",
+  image_url: "Banana_juice.jpg",
+  stock: Faker::Number.between(from: 1, to: 100),
+  category_id: category2.id
+)
+
+juice2 = Product.create!(
+  title: "Grapefruit juice",
+  price: Faker::Commerce.price,
+  description: "1 liter",
+  image_url: "Grapefruit_juice.jpg",
+  stock: Faker::Number.between(from: 1, to: 100),
+  category_id: category2.id
+)
+
+juice3 = Product.create!(
+  title: "Apple juice",
+  price: Faker::Commerce.price,
+  description: "1 liter",
+  image_url: "Apple_juice.jpg",
+  stock: Faker::Number.between(from: 1, to: 100),
+  category_id: category2.id
+)
+
+juice4 = Product.create!(
+  title: "Orange juice",
+  price: Faker::Commerce.price,
+  description: "1 liter",
+  image_url: "Orange_juice.jpg",
+  stock: Faker::Number.between(from: 1, to: 100),
+  category_id: category2.id
+)
+
+juice5 = Product.create!(
+  title: "Pineapple juice",
+  price: Faker::Commerce.price,
+  description: "1 liter",
+  image_url: "Pineapple_juice.jpg",
+  stock: Faker::Number.between(from: 1, to: 100),
+  category_id: category2.id
+)
+
+juice6 = Product.create!(
+  title: "Pomegranate juice",
+  price: Faker::Commerce.price,
+  description: "1 liter",
+  image_url: "Pomegranate_juice.jpg",
+  stock: Faker::Number.between(from: 1, to: 100),
+  category_id: category2.id
+)
+
+nut1 = Product.create!(
+  title: "Almond",
+  price: Faker::Commerce.price,
+  description: "1 kg",
+  image_url: "almond.jpg",
+  stock: Faker::Number.between(from: 1, to: 100),
+  category_id: category3.id
+)
+
+nut2 = Product.create!(
+  title: "Cashew",
+  price: Faker::Commerce.price,
+  description: "1 kg",
+  image_url: "cashew.jpg",
+  stock: Faker::Number.between(from: 1, to: 100),
+  category_id: category3.id
+)
+
+nut3 = Product.create!(
+  title: "Hazelnut in shell",
+  price: Faker::Commerce.price,
+  description: "1 kg",
+  image_url: "hazelnut_in_shell.jpg",
+  stock: Faker::Number.between(from: 1, to: 100),
+  category_id: category3.id
+)
+
+nut4 = Product.create!(
+  title: "Pistachios in shell",
+  price: Faker::Commerce.price,
+  description: "1 kg",
+  image_url: "pistachios_in_shell.jpg",
+  stock: Faker::Number.between(from: 1, to: 100),
+  category_id: category3.id
+)
+
+nut5 = Product.create!(
+  title: "Hazelnuts peeled",
+  price: Faker::Commerce.price,
+  description: "1 kg",
+  image_url: "hazelnuts_peeled.jpg",
+  stock: Faker::Number.between(from: 1, to: 100),
+  category_id: category3.id
+)
+
+nut6 = Product.create!(
+  title: "Walnut",
+  price: Faker::Commerce.price,
+  description: "1 kg",
+  image_url: "walnut.jpg",
+  stock: Faker::Number.between(from: 1, to: 100),
+  category_id: category3.id
 )
