@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
     @nuts =  @products.select {|i| i.category.name == "Nuts"}.take(6)
 
     @feedback = Feedback.new
+    @reviews = Review.all.take(3)
   end
 
   # def show
