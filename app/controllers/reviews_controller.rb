@@ -1,6 +1,10 @@
 class ReviewsController < ApplicationController
   def new
-    @review = current_user.reviews.build
+    if current_user.present?
+      @review = current_user.reviews.build
+    else
+      render :notice
+    end
   end
 
   def create
@@ -21,6 +25,7 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def notice; end
 
   private
 
