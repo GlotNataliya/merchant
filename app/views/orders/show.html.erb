@@ -1,55 +1,56 @@
-<h1>Your Order</h1>
-
-<%= form_for @order do |f| %>
-  <table>
-    <tr>
-      <th>Customer</th>
-      <td><%= @order.user.full_name if @order.user %></td>
-    </tr>
-    <tr>
-      <th>Status:</th>
-      <td><%= @order.status %></td>
-    </tr>
-    <tr>
-      <th>Items count:</th>
-      <td><%= @order.order_items.count %></td>
-    </tr>
-    <tr>
-      <th>Items</th>
-      <th>Title</th>
-      <th>Quantity</th>
-      <th>Stock</th>
-      <th>Unit Price</th>
-      <th>Subtotal</th>
-    </tr>
-    <% @order.order_items.each do |item| %>
-      <tr>
-        <td><%= image_tag "products/#{item.product.image_url}" %></td>
-        <td><%= item.product.title %></td>
-        <td><%= link_to item.quantity, edit_order_item_path(item) %></td>
-        <td><%= print_stock(item.product.stock, item.quantity) %></td>
-        <td><%= print_price(item.product.price) %></td>
-        <td><%= print_price(item.subtotal) %></td>
-        <td><%= link_to "Remove", item, data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" } %></td>
-      </tr>
-    <% end %>
-    <tr>
-      <th>Order Total: </th>
-      <td><%= print_price(@order.total) %></td>
-    </tr>
-
-    <% if current_user.present? %>
-      <tr>
-        <th>Shipping To:</th>
-        <td>
-          <%= f.select :address_id, current_user.addresses.collect{|a| [a.to_s, a.id]}, selected: current_user.addresses.ids.last %>
-          <%= link_to "Add an address", new_address_path %>
-        </td>
-      </tr>
-    <% end %>
-
-  </table>
-  <%= f.submit "Submit Order" %>
-<% end %>
-
-<%= link_to "Empty Cart", @order, data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" } %>
+<div class="bg-light pt-2 pb-2 mt-5">
+  <h1 class="text-center mt-5 mb-5">Your Order</h1>
+  <div class="d-flex justify-content-center">
+    <div class="w-50">
+      <%= form_for @order do |f| %>
+        <ul class="list-inline">
+          <div class="row">
+            <li class="col h4"><b>Customer:</b></li>
+            <li class="col h5"><%= @order.user.full_name if @order.user %></li>
+          </div>
+          <div class="row">
+            <li class="col h4"><b>Status:</b></li>
+            <li class="col h5"><%= @order.status %></li>
+          </div>
+          <div class="row">
+            <li class="col h4"><b>Items count:</b></li>
+            <li class="col h5"><%= @order.order_items.count %></li>
+          </div>
+        </ul>
+        <div class="container shadow-lg p-5 mb-5 bg-body rounded">
+          <% @order.order_items.each do |item| %>
+            <ul class="list-inline">
+              <li class="d-flex justify-content-between align-items-center bg-light">
+                <span class="h5 w-25"><b><%= item.product.title %></b></span>
+                <%= turbo_frame_tag item do %>
+                  <%= link_to item.quantity, edit_order_item_path(item), class: "btn btn-light"  %>
+                <% end %>
+                <span><%= print_price(item.product.price) %></span>
+                <%= print_price(item.subtotal) %>
+                <%= link_to image_tag("icons/rubbish.png"), item,
+              data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" }, class: "btn mb-2" %>
+              </li>
+            </ul>
+          <% end %>
+        </div>
+        <ul class="list-inline">
+          <div class="row align-items-end">
+            <li class="col h4"><b>Order Total:</b></li>
+            <li class="col h5"><%= print_price(@order.total) %></li>
+          </div>
+          <% if current_user.present? %>
+            <div class="row align-items-center">
+              <li class="col h4"><b>Shipping To:</b></li>
+              <li class="col h5"><%= f.collection_select :address_id, @addresses, :id, :to_s, {}, class: "form-select" %></li>
+              <li><%= link_to "+ Add new address", new_address_path, class: "btn btn-success mb-5" %></li>
+            </div>
+          <% end %>
+        </ul>
+          <div class="d-flex justify-content-center">
+            <%= f.submit "Submit Order", class: "btn btn-primary mb-5" %>
+            <%= link_to "Empty Cart", @order, data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger ms-5 mb-5"%>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>

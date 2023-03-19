@@ -7,6 +7,6 @@ class Address < ApplicationRecord
   validates :state, length: { maximum: 2 }
 
   def to_s
-    [line1, line2, city, state, zip].select(&:present?).join(',')
+    [line1, line2, city, state, zip].select(&:present?).join(', ')
   end
 end

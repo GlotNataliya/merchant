@@ -30,7 +30,7 @@
       <div class="row mt-4">
         <div class=”field”>
           <%= form.text_area :message, class: "form-control form-control-lg bg-light border-0", rows: 4, cols: 40,
-                                            placeholder: "Your question, feedback or request" %>
+                                            required: true, placeholder: "Your question, feedback or request" %>
         </div>
       </div>
 
@@ -41,7 +41,7 @@
 
       <div class="row mt-4">
         <div class="mb-3 d-flex">
-          <%= form.check_box :term, class: "form-check-input" %>
+          <%= form.check_box :term, class: "form-check-input", required: true %>
           <p class="ms-3">I here by confirm that I have read and agree to the terms and conditions
                                                             offers and</br> privacy policies</p>
         </div>

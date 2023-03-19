@@ -7,6 +7,8 @@ class OrdersController < ApplicationController
 
   def show
     @order = current_user.orders.last if current_user.present?
+
+    @addresses = current_user.addresses
     # if current_user.present?
     #   redirect_to confirm_order_path(@order)
     # else
@@ -15,14 +17,14 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @order = Order.new
+    @order = current_user.orders.build
   end
 
   def edit
   end
 
   def create
-    @order = Order.new(order_params)
+    @order = current_user.orders.build(order_params)
 
     if @order.save
       redirect_to order_url(@order), notice: "Order was successfully created."
@@ -32,16 +34,11 @@ class OrdersController < ApplicationController
   end
 
   def update
-    if current_user.present?
-      if @order.update(order_params.merge(status: 'submitted'))
-        # session[:order_id] = nil
-
-        redirect_to confirm_order_path(@order)
-      else
-        render :edit, status: :unprocessable_entity
-      end
+    if @order.update(order_params.merge(status: 'submitted'))
+      # session[:order_id] = nil
+      redirect_to confirm_order_path(@order)
     else
-      redirect_to new_user_session_path, notice: "You must register to save your order."
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -58,7 +55,7 @@ class OrdersController < ApplicationController
   private
 
     def set_order
-      @order = Order.find(params[:id])
+      @order = current_user.orders.find(params[:id])
     end
 
     def order_params

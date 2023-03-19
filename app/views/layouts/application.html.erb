@@ -17,14 +17,7 @@
       <%= render "shared/navbar" %>
     <% end %>
 
-    <div class="container">
-      <br>
-      <% flash.each do |key, message| %>
-        <p class="alert alert-<%= key %>"><%= message %></p>
-      <% end %>
-    </div>
-
-    <!-- <p style="color: green"><%= flash[:notice] %></p> -->
+    <p style="color: green"><%= flash[:notice] %></p>
 
     <div class="product-container mx-auto">
       <%= yield %>

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark bg-blue justify-content-center mt-3" style="color: #e3f2fd;">
+<nav class="navbar navbar-dark bg-blue justify-content-center mt-3">
   <form class="d-flex">
     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-success" type="submit">Search</button>
@@ -10,9 +10,12 @@
           <%= @order.order_items.count %>
       </span>
     <% else %>
-      <%= link_to image_tag("icons/cart.svg", size: "32x28"), "#", class: "position-relative" %>
+    <div data-controller="card" data-card-target="link" data-card-loading-class="text-danger">
+      <%= image_tag "icons/cart.svg", size: "32x28", class: "position-relative",
+                                      data: { action: "click->card#toggle" } %>
       <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+    </div>
     <% end %>
   </div>
-  <div class="ms-5" style="color: #1f7d63;"><%= print_price(@order&.total) %></div>
+  <div class="ms-5 text-success"><%= print_price(@order&.total) %></div>
 </nav>

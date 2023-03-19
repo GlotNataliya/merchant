@@ -62,7 +62,7 @@ class OrderItemsController < ApplicationController
         session[:order_id] = @order.id
       end
     else
-      redirect_to new_user_session_path, notice: "You must registration"
+      redirect_to new_user_session_path, notice: "Please have registration"
     end
   end
 end
