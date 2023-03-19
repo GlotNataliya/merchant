@@ -1,14 +1,5 @@
 <%= form_with(model: order) do |form| %>
-  <% if order.errors.any? %>
-    <div style="color: red">
-      <ul>
-        <% order.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+  <%= form_error_notification(order) %>
   <div>
     <%= form.label :user_id, style: "display: block" %>
     <%= form.number_field :user_id %>

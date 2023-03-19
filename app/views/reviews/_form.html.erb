@@ -1,13 +1,5 @@
 <%= form_with(model: review) do |form| %>
-  <% if review.errors.any? %>
-    <div style="color: red">
-      <ul>
-        <% review.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= form_error_notification(review) %>
 
   <div class=" d-flex justify-content-center">
     <div class="mt-3 col-8 w-50">

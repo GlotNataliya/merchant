@@ -1,15 +1,7 @@
 <div class="row justify-content-center">
   <div class="col-4 shadow p-5 mb-5 bg-body rounded">
     <%= form_with model: [:admin, product] do |form| %>
-      <% if product.errors.any? %>
-        <div style="color: red">
-          <ul>
-            <% product.errors.each do |error| %>
-              <li><%= error.full_message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+      <%= form_error_notification(product) %>
 
       <div class="mt-3">
         <%= form.label :category, style: "display: block" %>
