@@ -18,7 +18,12 @@ Rails.application.routes.draw do
 
   resources :reviews, only: %i[new create update]
   resources :addresses
-  resources :order_items
+  resources :order_items do
+    member do
+      post :plus
+      post :minus
+    end
+  end
   resources :products, only: %i[index show]
   resources :feedbacks, only: %i[new create]
   get '/feedbacks', to: 'feedbacks#new', as: 'feedback'

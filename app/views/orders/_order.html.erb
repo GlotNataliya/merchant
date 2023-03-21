@@ -1,7 +1,7 @@
 <div id="<%= dom_id order %>">
   <p>
-    <strong>User:</strong>
-    <%= order.user_id %>
+    <strong>Order number: </strong>
+    <%= order.id %>
   </p>
 
   <p>
@@ -9,4 +9,8 @@
     <%= order.status %>
   </p>
 
+  <p>
+    <strong>Order address: </strong>
+    <%= order.address %>
+  </p>
 </div>

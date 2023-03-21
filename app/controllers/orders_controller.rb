@@ -9,6 +9,8 @@ class OrdersController < ApplicationController
     @order = current_user.orders.last if current_user.present?
 
     @addresses = current_user.addresses
+
+    @order_items = @order.order_items.order(created_at: :desc)
     # if current_user.present?
     #   redirect_to confirm_order_path(@order)
     # else
@@ -48,9 +50,7 @@ class OrdersController < ApplicationController
     redirect_to products_path, notice: "Order was successfully destroyed."
   end
 
-  def confirm
-
-  end
+  def confirm; end
 
   private
 

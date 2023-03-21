@@ -1,8 +1,8 @@
 <%= form_with(model: order) do |form| %>
   <%= form_error_notification(order) %>
+
   <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.number_field :user_id %>
+    <%= form.hidden_field :user_id %>
   </div>
 
   <div>
