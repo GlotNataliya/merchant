@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
   def show
     @order = current_user.orders.last if current_user.present?
 
-    @addresses = current_user.addresses
+    @addresses = current_user&.addresses
 
     @order_items = @order.order_items.order(created_at: :desc)
     # if current_user.present?
@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
 
   def update
     if @order.update(order_params.merge(status: 'submitted'))
-      # session[:order_id] = nil
+      session[:order_id] = nil
       redirect_to confirm_order_path(@order)
     else
       render :edit, status: :unprocessable_entity

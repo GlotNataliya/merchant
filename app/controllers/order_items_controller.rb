@@ -1,5 +1,5 @@
 class OrderItemsController < ApplicationController
-  before_action :set_order, only: %i[ plus minus ]
+  before_action :set_order, only: %i[ destroy plus minus ]
   before_action :set_order_item, only: %i[ edit update destroy plus minus ]
   before_action :load_order, only: %i[ create update ]
 
@@ -63,7 +63,7 @@ class OrderItemsController < ApplicationController
   end
 
   def set_order
-    @order = current_user.orders.find_by(id: session[:order_id])
+    @order = current_user.orders.find_by(id: current_user.orders.last.id)
   end
 
   def load_order

@@ -16,23 +16,21 @@
           </div>
           <div class="row">
             <li class="col h4"><b>Items count:</b></li>
-            <li class="col h5"><%= @order.order_items.count %></li>
+            <li class="col h5"><%= @order_items.count %></li>
           </div>
         </ul>
 
-        <%= turbo_frame_tag @order do %>
-          <%= render "order_items/order_item" %>
+        <%= render "order_items/order_item" %>
 
-          <ul class="list-inline">
-            <div class="row align-items-end">
-              <li class="col h4"><b>Order Total:</b></li>
-              <li class="col h5"><%= print_price(@order.total) %></li>
-            </div>
-            <% if current_user.present? %>
-              <%= render partial: "add_address", locals: { f: f }  %>
-            <% end %>
-          </ul>
-        <% end %>
+        <ul class="list-inline">
+          <div class="row align-items-end">
+            <li class="col h4"><b>Order Total:</b></li>
+            <li class="col h5"><%= print_price(@order.total) %></li>
+          </div>
+          <% if current_user.present? %>
+            <%= render partial: "add_address", locals: { f: f }  %>
+          <% end %>
+        </ul>
 
         <div class="d-flex justify-content-center mt-5" data-address-target="hideButtons">
           <% if current_user.addresses.present? %>
