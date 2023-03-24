@@ -1,6 +1,6 @@
-<div class="col bg-light p-4">
+<ul class="bg-light p-4 list-inline">
   <div id="<%= dom_id review %>">
-    <h4><b><%= review.user.full_name %></b></h4>
-    <p class=" mb-3 mt-3"><%= review.description %></p>
+    <li class="h4 font-weight-bold"><%= review.user.full_name %></li>
+    <li class=" mb-3 mt-3 w-405"><%= review.description %></li>
   </div>
-</div>
+</ul>

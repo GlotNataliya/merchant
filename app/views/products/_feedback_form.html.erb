@@ -5,15 +5,7 @@
 <div class="row d-flex justify-content-center">
   <div class="feedback-form mt-4">
     <%= form_for @feedback, data: { turbo: false } do |form| %>
-      <% if @feedback.errors.any? %>
-        <div style="color: red">
-          <ul>
-            <% @feedback.errors.each do |error| %>
-              <li><%= error.full_message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+      <%= form_error_notification(@feedback) %>
 
       <div class="row">
         <div class="col-6">

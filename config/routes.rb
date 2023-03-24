@@ -11,9 +11,7 @@ Rails.application.routes.draw do
   end
 
   resources :orders do
-    member do
-      get :confirm
-    end
+    get :confirm, on: :member
   end
 
   resources :reviews, only: %i[new create update]

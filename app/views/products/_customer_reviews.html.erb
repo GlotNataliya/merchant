@@ -8,7 +8,7 @@
 
 <%= turbo_frame_tag "new_review" %>
 
-<div class="row gap-4 mt-3" id="reviews">
+<div class="d-flex gap-4 mt-3 overflow-auto" id="reviews">
   <% @reviews.each do |review| %>
     <%= render review %>
   <% end %>
