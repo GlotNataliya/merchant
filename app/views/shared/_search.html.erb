@@ -7,7 +7,7 @@
     <% if user_signed_in? && @order.present? %>
       <%= link_to image_tag("icons/cart.svg", size: "32x28"), order_path(@order) %>
       <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-          <%= @order.order_items.count %>
+          <%= @order_items.size %>
       </span>
     <% else %>
     <div data-controller="card" data-card-target="link" data-card-loading-class="text-danger">

@@ -26,5 +26,8 @@ Rails.application.routes.draw do
   resources :feedbacks, only: %i[new create]
   get '/feedbacks', to: 'feedbacks#new', as: 'feedback'
 
+  get 'pages/about', to: 'pages#about', as: 'about'
+  get 'pages/contact', to: 'pages#contact', as: 'contact'
+
   root "products#index"
 end
