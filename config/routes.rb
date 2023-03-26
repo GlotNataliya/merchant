@@ -28,6 +28,8 @@ Rails.application.routes.draw do
 
   get 'pages/about', to: 'pages#about', as: 'about'
   get 'pages/contact', to: 'pages#contact', as: 'contact'
+  get 'pages/delivery', to: 'pages#delivery', as: 'delivery'
+  get 'pages/payment', to: 'pages#payment', as: 'payment'
 
   root "products#index"
 end

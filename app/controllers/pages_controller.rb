@@ -1,9 +1,13 @@
 class PagesController < ApplicationController
-  before_action :set_order_items, only: %i[ about contact ]
+  before_action :set_order_items, only: %i[ about contact delivery payment]
 
   def about; end
 
   def contact; end
+
+  def delivery; end
+
+  def payment; end
 
   private
 
