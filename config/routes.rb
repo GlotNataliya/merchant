@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   get 'pages/contact', to: 'pages#contact', as: 'contact'
   get 'pages/delivery', to: 'pages#delivery', as: 'delivery'
   get 'pages/payment', to: 'pages#payment', as: 'payment'
+  get 'pages/personal_account', to: 'pages#personal_account', as: 'account'
+  get 'pages/blog', to: 'pages#blog', as: 'blog'
 
   root "products#index"
 end

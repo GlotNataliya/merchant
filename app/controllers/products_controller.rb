@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
 
     @order = current_user.orders.last if current_user.present?
 
-    @order_items = @order.order_items
+    @order_items = @order&.order_items
 
     @new_arrivals = products.includes(:category).where(categories: { name: "New arrival" })
     @juices = products.includes(:category).where(categories: { name: "Water, juices, drinks" })
