@@ -2,45 +2,7 @@
   <h1 class="text-center mt-5 mb-5">Your Order</h1>
   <div class="d-flex justify-content-center">
     <div class="w-50" data-controller="address">
-      <%= form_with model: @order do |f| %>
-        <%= form_error_notification(@order) %>
-
-        <ul class="list-inline">
-          <div class="row">
-            <li class="col h4"><b>Customer:</b></li>
-            <li class="col h5"><%= @order.user.full_name if @order.user %></li>
-          </div>
-          <div class="row">
-            <li class="col h4"><b>Status:</b></li>
-            <li class="col h5"><%= @order.status %></li>
-          </div>
-          <div class="row">
-            <li class="col h4"><b>Items count:</b></li>
-            <li class="col h5"><%= @order_items.size %></li>
-          </div>
-        </ul>
-
-        <%= render "order_items/order_item" %>
-
-        <ul class="list-inline">
-          <div class="row align-items-end">
-            <li class="col h4"><b>Order Total:</b></li>
-            <li class="col h5"><%= print_price(@order.total) %></li>
-          </div>
-          <% if current_user.present? %>
-            <%= render partial: "add_address", locals: { f: f }  %>
-          <% end %>
-        </ul>
-
-        <div class="d-flex justify-content-center mt-5" data-address-target="hideButtons">
-          <% if current_user.addresses.present? %>
-            <%= f.submit "Submit Order", class: "btn btn-primary mb-5" %>
-          <% else %>
-            <%= f.submit "Submit Order", class: "btn btn-primary mb-5 disabled" %>
-          <% end %>
-          <%= link_to "Empty Cart", @order, data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger ms-5 mb-5"%>
-        </div>
-      <% end %>
+      <%= render "order" %>
     </div>
   </div>
 </div>

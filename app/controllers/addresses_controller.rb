@@ -20,7 +20,7 @@ class AddressesController < ApplicationController
     @order = Order.find_by(id: session[:order_id])
 
     if @address.save
-      redirect_to order_url(current_user, @order), notice: "Address was successfully created."
+      redirect_to order_url(@order), notice: "Address was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
