@@ -1,12 +1,13 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[ edit update destroy confirm]
+  before_action :authenticate_user!
 
   def index
     @orders = current_user.orders
   end
 
   def show
-    @order = current_user.orders.last if current_user.present?
+    @order = current_user.orders.last
 
     @addresses = current_user&.addresses
 

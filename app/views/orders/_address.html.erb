@@ -1,15 +1,19 @@
+
 <div class="row align-items-center">
   <li class="col h4"><b>Shipping To:</b></li>
   <% if current_user.addresses.present? %>
     <li class="col h5"><%= order.collection_select :address_id, @addresses.reverse, :id, :to_s,
-                      { selected: @addresses.last.id }, class: "form-select", required: true %></li>
+                      { selected: @addresses.last.id }, class: "form-select", required: true %>
+    </li>
     <li><%= link_to "+ Add address", new_address_path, class: "btn btn-secondary mb-5",
-                    data: { turbo_frame: dom_id(Address.new), action: "click->address#onclickHide" } %></li>
+                    data: { turbo_frame: dom_id(Address.new), action: "click->address#onclickHide" } %>
+    </li>
 
     <%= turbo_frame_tag "new_address" %>
   <% else %>
     <li class="col"><%= link_to "+ Add address", new_address_path, class: "btn btn-secondary mb-3",
-                          data: { turbo_frame: dom_id(Address.new), action: "click->address#onclickHide" } %></li>
+                          data: { turbo_frame: dom_id(Address.new), action: "click->address#onclickHide" } %>
+    </li>
     <%= turbo_frame_tag "new_address" %>
   <% end %>
 </div>

@@ -10,5 +10,11 @@ application.register("address", AddressController)
 import CardController from "./card_controller"
 application.register("card", CardController)
 
+import FormElementController from "./form_element_controller"
+application.register("form-element", FormElementController)
+
+import FormResetController from "./form_reset_controller"
+application.register("form-reset", FormResetController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)

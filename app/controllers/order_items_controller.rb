@@ -2,6 +2,7 @@ class OrderItemsController < ApplicationController
   before_action :set_order, only: %i[ destroy plus minus ]
   before_action :set_order_item, only: %i[ edit update destroy plus minus ]
   before_action :load_order, only: %i[ create update ]
+  before_action :authenticate_user!
 
   def show
     # if current_user.present?

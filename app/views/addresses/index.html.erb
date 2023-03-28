@@ -1,14 +1,23 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Addresses</h1>
-
-<div id="addresses">
-  <% @addresses.each do |address| %>
-    <%= render address %>
-    <p>
-      <%= link_to "Show this address", address %>
-    </p>
-  <% end %>
+<div class="d-flex justify-content-between mt-5">
+  <h2>Delivery Addresses</h2>
+  <div>
+    <%= link_to "+ Add new Address", new_address_path, class: "btn btn-dark",
+                                          data: { turbo_frame: dom_id(Address.new) } %>
+  </div>
 </div>
 
-<%= link_to "New address", new_address_path %>
+<div class="mx-auto w-652">
+  <%= turbo_frame_tag "new_address" %>
+</div>
+
+<% if current_user.addresses.present? %>
+  <div class="shadow-lg p-5 mb-5 mt-5 bg-body rounded">
+    <div id="addresses">
+      <% @addresses.each do |address| %>
+        <%= render address %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
