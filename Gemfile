@@ -99,3 +99,5 @@ gem "strong_migrations", "~> 1.4"
 gem 'city-state', '~> 0.1.0'
 
 gem 'file_exists', '~> 0.2.0'
+
+gem 'stripe'
