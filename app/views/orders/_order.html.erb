@@ -21,7 +21,7 @@
   <ul class="list-inline">
     <div class="row align-items-end">
       <li class="col h4"><b>Order Total:</b></li>
-      <li class="col h5"><%= print_price(@order.total) %></li>
+      <li class="col h5"><%= number_to_currency(@order.total) %></li>
     </div>
 
     <% if current_user.present? %>

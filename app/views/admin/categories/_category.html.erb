@@ -7,7 +7,7 @@
           <div class="d-flex">
           <%= link_to image_tag("icons/editing.png"), edit_admin_category_path(category), class: "btn btn-warning mt-3 me-3" %>
           <%= button_to image_tag("icons/rubbish.png"), admin_category_path(category), method: :delete,
-                      data: { turbo: "false", confirm: 'Are you sure?' }, class: "btn btn-warning mt-3" %>
+                      data: { turbo_frame: "_top", turbo_confirm: 'Are you sure?' }, class: "btn btn-warning mt-3" %>
           </div>
         </li>
       </ul>

@@ -8,9 +8,9 @@
 <div class="d-flex gap-3 overflow-auto">
   <% @new_arrivals.each do |product| %>
       <ul class="list-inline border border-light">
-        <li><%= image_tag "products/fruits/#{product.image_url}", size: "220x220", class: "text-decoration-none" %></li>
+        <li><%= image_tag product.image_url(:small).to_s, class: "text-decoration-none" if product.image? %></li>
         <li class="ms-3"><%= product.title %>, <%= product.description %></li>
-        <li class="ms-3 mt-3 h3"><b><%= print_price(product.price) %></b></li>
+        <li class="ms-3 mt-3 h3"><b><%= product.price_cents %><%= currency_of_price(product.currency) %></b></li>
         <li class="ms-3 mt-3"><i><%= print_stock(product.stock) %></i></li>
         <li>
           <%= button_to order_items_path(product_id: product.id), class: "btn btn-success col-12" do %>

@@ -6,6 +6,6 @@ class OrderItem < ApplicationRecord
   validates :quantity, numericality: { only_integer: true, greater_than: 0 }
 
   def subtotal
-    product.price * quantity
+    product.price_cents * quantity unless product.nil?
   end
 end

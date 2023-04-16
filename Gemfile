@@ -101,3 +101,9 @@ gem 'city-state', '~> 0.1.0'
 gem 'file_exists', '~> 0.2.0'
 
 gem 'stripe'
+
+gem "carrierwave", ">= 3.0.0.beta", "< 4.0"
+
+gem "mini_magick"
+
+gem 'money-rails'

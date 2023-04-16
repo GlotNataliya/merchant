@@ -33,5 +33,10 @@ Rails.application.routes.draw do
   get 'pages/personal_account', to: 'pages#personal_account', as: 'account'
   get 'pages/blog', to: 'pages#blog', as: 'blog'
 
+  post "checkout/create", to: "checkout#create"
+  resources :webhooks, only: [:create]
+  get "success", to: "checkout#success"
+  get "cancel", to: "checkout#cancel"
+
   root "products#index"
 end

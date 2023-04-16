@@ -13,8 +13,8 @@
           <%= item.quantity %>
           <%= link_to '+', plus_order_item_path(item), data: { "turbo-method": :post }, class: 'btn btn-success ms-2' %>
         </div>
-        <span><%= print_price(item.product.price) %></span>
-        <%= print_price(item.subtotal) %>
+        <span><%= number_to_currency(item.product.price_cents) %></span>
+        <%= number_to_currency(item.subtotal) %>
         <%= link_to image_tag("icons/rubbish.png"), item,
       data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" }, class: "btn mb-2" %>
       </li>

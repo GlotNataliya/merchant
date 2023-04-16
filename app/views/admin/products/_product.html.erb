@@ -7,7 +7,8 @@
             <li class="h3 p-2 mb-auto">
               <%= product.title %>, <%= product.description %>
             </li>
-            <li class="ms-3 mt-3"><b>Price:</b>&nbsp;&nbsp;<%= print_price(product.price) %></li>
+            <li class="ms-3 mt-3"><b>Price:</b>&nbsp;&nbsp;<%= number_to_currency(product.price_cents) %>
+            </li>
             <li class="ms-3 mt-3"><b><%= print_stock(product.stock) %></b></li>
           </ul>
           <div class="p-2">
@@ -17,7 +18,7 @@
           </div>
         </div>
         <div class="col text-end">
-          <%= image_tag "products/#{product.image_url}", size: "100x100", class: "text-decoration-none" %>
+          <%= image_tag product.image_url(:small).to_s, class: "text-decoration-none" %>
         </div>
       </div>
     </div>

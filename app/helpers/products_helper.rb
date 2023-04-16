@@ -1,9 +1,4 @@
 module ProductsHelper
-  def print_price(price)
-    # format("$%.2f", price)
-    number_to_currency price
-  end
-
   def print_stock(stock, requested = 1)
     if stock.zero?
       content_tag(:span, content_tag(:p, "Out of Stock"), class: "out_stock")
@@ -14,8 +9,7 @@ module ProductsHelper
     end
   end
 
-  # def price=(input)
-  #   input.delete!("$")
-  #   super
-  # end
+  def currency_of_price(currency)
+    { 'usd' => '$', 'eur' => '€', 'rub' => '₽', 'pln' => 'zł', 'byn' => 'br', 'uah' => '₴' }.fetch(currency)
+  end
 end

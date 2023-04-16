@@ -1,0 +1,29 @@
+<div class="bg-light pt-2 pb-2 mt-5">
+  <h2 class="text-center mt-5 mb-5">Thank you for your order!</h2>
+  <div class="d-flex justify-content-center">
+    <div class="mx-auto">
+      <div class="d-flex">
+        <h4 class="me-3"><strong>Name:</strong></h4>
+        <h5><%= @session_with_expand.customer_details.name %></h5>
+      </div>
+      <div class="d-flex">
+        <h4 class="me-3"><strong>Email:</strong></h4>
+        <h5><%= @session_with_expand.customer_details.email %></h5>
+      </div>
+      <hr>
+      <div  class="d-flex">
+        <h4 class="me-3"><strong>Order Total:</strong></h4>
+        <div class="h5">
+          <%= number_to_currency(@session_with_expand.amount_total/100.to_f) %>
+        </div>
+      </div>
+      <div class="d-flex">
+        <h4 class="me-3"><strong>Payment status:</strong></h4>
+        <spa class="h5"><%= @session_with_expand.payment_status %></spa>
+      </div>
+      <br>
+      <p class="mb-0">We appreciate your business! If you have any </p>
+      <p class="mb-5">questions, please email <%= link_to "orders@example.com", "#" %></p>
+    </div>
+  </div>
+</div>
