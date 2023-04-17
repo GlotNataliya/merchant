@@ -4,7 +4,8 @@ module Admin
     before_action :check_if_admin
 
     def index
-      @products = Product.order(created_at: :desc)
+      @q = Product.ransack(params[:q])
+      @products = @q.result(distinct: true).order(created_at: :desc)
     end
 
     def new
@@ -53,7 +54,7 @@ module Admin
     end
 
     def product_params
-      params.require(:product).permit(:title, :price, :price_cents, :description, :image, :currency, :stock, :category_id, )
+      params.require(:product).permit(:title, :price, :price_cents, :description, :image, :currency, :stock, :category_id)
     end
 
     def check_if_admin

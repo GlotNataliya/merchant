@@ -107,3 +107,5 @@ gem "carrierwave", ">= 3.0.0.beta", "< 4.0"
 gem "mini_magick"
 
 gem 'money-rails'
+
+gem 'ransack'

@@ -10,6 +10,9 @@ application.register("address", AddressController)
 import CardController from "./card_controller"
 application.register("card", CardController)
 
+import FilterController from "./filter_controller"
+application.register("filter", FilterController)
+
 import FormElementController from "./form_element_controller"
 application.register("form-element", FormElementController)
 

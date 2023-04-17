@@ -28,6 +28,10 @@ class User < ApplicationRecord
     role == "admin"
   end
 
+  def consumer?
+    role == "consumer"
+  end
+
   def to_s
     email
   end
