@@ -10,10 +10,13 @@ class ReviewsController < ApplicationController
   def create
     @review = current_user.reviews.build(review_params)
 
-    if @review.save
-      redirect_to root_path, notice: "Review was successfully created."
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      if @review.save
+        format.html { redirect_to root_path, notice: "Review was successfully created." }
+        format.turbo_stream
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
     end
   end
 
