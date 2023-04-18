@@ -3,6 +3,7 @@
 class AddressesController < ApplicationController
   before_action :set_address, only: %i[show edit update destroy]
   before_action :authenticate_user!
+  respond_to :html, :turbo_stream
 
   def index
     @addresses = current_user.addresses.order(created_at: :desc)
@@ -20,22 +21,16 @@ class AddressesController < ApplicationController
     @address = current_user.addresses.build(address_params)
     find_order
 
-    respond_to do |format|
-      if @address.save
-        format.html { redirect_to request.referer, notice: t(".notice") }
-        format.turbo_stream { flash.now[:notice] = t(".notice") }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-      end
+    if @address.save
+      respond_with @address, location: -> { request.referer }
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   def update
     if @address.update(address_params)
-      respond_to do |format|
-        format.html { redirect_to request.referer, notice: t(".notice") }
-        format.turbo_stream { flash.now[:notice] = t(".notice") }
-      end
+      respond_with @address, location: -> { addresses_path }
     else
       render :edit, status: :unprocessable_entity
     end
@@ -44,10 +39,7 @@ class AddressesController < ApplicationController
   def destroy
     @address.destroy
 
-    respond_to do |format|
-      format.html { redirect_to request.referer, notice: t(".notice") }
-      format.turbo_stream { flash.now[:notice] = t(".notice") }
-    end
+    respond_with @address, location: -> { addresses_path }
   end
 
   private

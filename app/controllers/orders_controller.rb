@@ -3,6 +3,7 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[edit update destroy confirm]
   before_action :authenticate_user!
+  respond_to :html, :turbo_stream
 
   def index
     @orders = current_user.orders
@@ -26,7 +27,7 @@ class OrdersController < ApplicationController
     @order = current_user.orders.build(order_params)
 
     if @order.save
-      redirect_to order_url(@order), notice: "Order was successfully created."
+      respond_with @order, location: -> { order_path(@order) }
     else
       render :new, status: :unprocessable_entity
     end
@@ -34,7 +35,6 @@ class OrdersController < ApplicationController
 
   def update
     if @order.update(order_params.merge(status: "submitted"))
-      # session[:order_id] = nil
       redirect_to confirm_order_path(@order)
     else
       render :edit, status: :unprocessable_entity
@@ -44,7 +44,7 @@ class OrdersController < ApplicationController
   def destroy
     @order.destroy
 
-    redirect_to products_path, notice: "Order was successfully destroyed."
+    respond_with @order, location: -> { products_path }
   end
 
   def confirm; end

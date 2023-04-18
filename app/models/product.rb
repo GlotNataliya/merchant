@@ -2,7 +2,7 @@
 
 class Product < ApplicationRecord
   belongs_to :category
-  has_many :order_items
+  has_many :order_items, dependent: :destroy
 
   validates :stock, :title, :price, :description, :image_url, presence: true
 

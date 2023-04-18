@@ -1,2 +1,3 @@
 <%= turbo_stream.prepend :products, @product %>
 <%= turbo_stream.update "new_product" %>
+<%= render_turbo_stream_flash_messages %>

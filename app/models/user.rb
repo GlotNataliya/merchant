@@ -3,9 +3,9 @@
 class User < ApplicationRecord
   extend Enumerize
 
-  has_many :orders
-  has_many :addresses
-  has_many :reviews
+  has_many :orders, dependent: :destroy
+  has_many :addresses, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -28,10 +28,6 @@ class User < ApplicationRecord
 
   def admin?
     role == "admin"
-  end
-
-  def consumer?
-    role == "consumer"
   end
 
   def to_s

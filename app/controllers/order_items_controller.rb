@@ -2,17 +2,10 @@
 
 class OrderItemsController < ApplicationController
   before_action :set_order, only: %i[destroy plus minus]
-  before_action :set_order_item, only: %i[edit update destroy plus minus]
-  before_action :load_order, only: %i[create update]
+  before_action :set_order_item, only: %i[edit destroy plus minus]
+  before_action :load_order, only: %i[create]
   before_action :authenticate_user!
-
-  def show
-    # if current_user.present?
-    #   redirect_to confirm_order_path(@order)
-    # else
-    #   redirect_to order_url(@order)
-    # end
-  end
+  respond_to :html, :turbo_stream
 
   def edit; end
 
@@ -22,27 +15,16 @@ class OrderItemsController < ApplicationController
     @order_item.update(quantity: @order_item.quantity + 1)
 
     if @order_item.save
-      redirect_to root_path, notice: "Successfully added product to cart."
+      respond_with @order_item, location: -> { root_path }
     else
       render :new, status: :unprocessable_entity
-    end
-  end
-
-  def update
-    if params[:order_item][:quantity].to_i.zero?
-      @order_item.destroy
-      redirect_to order_url(@order), notice: "Order item was successfully destroyed."
-    elsif @order_item.update(order_item_params)
-      redirect_to order_url(@order), notice: "Order item was successfully updated."
-    else
-      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @order_item.destroy
 
-    redirect_to order_url, notice: "Order item was successfully destroyed."
+    respond_with @order_item, location: -> { order_path }
   end
 
   def plus
@@ -71,15 +53,19 @@ class OrderItemsController < ApplicationController
 
   def load_order
     if current_user.present?
-      @order = current_user.orders.last ||
-               @order = Order.find_or_initialize_by(id: session[:order_id], user_id: current_user.id,
-                                                    status: "unsubmitted")
-      if @order.new_record?
-        @order.save!
-        session[:order_id] = @order.id
-      end
+      find_or_initialize_order
     else
-      redirect_to new_user_session_path, notice: "Please have registration"
+      redirect_to new_user_session_path
     end
+  end
+
+  def find_or_initialize_order
+    @order = current_user.orders.last ||
+    Order.find_or_initialize_by(id: session[:order_id], user_id: current_user.id, status: "unsubmitted")
+
+    return unless @order.new_record?
+
+    @order.save!
+    session[:order_id] = @order.id
   end
 end

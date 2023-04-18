@@ -1,24 +1,22 @@
 .flash {
-  position:fixed;
-  top: 5rem;
-  left: 50%;
-  transform: translateX(-50%);
-
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: var(--space-s);
-
+  left: 50%;
   max-width: 100%;
-  width: max-content;
   padding: 0 var(--space-m);
+  position: fixed;
+  top: 5rem;
+  transform: translateX(-50%);
+  width: max-content;
+  //gap: var(--space-s);
 
   &__message {
-    font-size: var(--font-size-s);
-    color: var(--color-white);
-    padding: var(--space-xs) var(--space-m);
-    background-color: var(--color-green);
     animation: appear-then-fade 4s both;
+    background-color: var(--color-green);
     border-radius: 999px;
+    color: var(--color-white);
+    font-size: var(--font-size-s);
+    padding: var(--space-xs) var(--space-m);
   }
 }

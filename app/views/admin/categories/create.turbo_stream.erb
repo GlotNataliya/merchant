@@ -1,2 +1,3 @@
 <%= turbo_stream.prepend :categories, @category %>
 <%= turbo_stream.update "new_category" %>
+<%= render_turbo_stream_flash_messages %>

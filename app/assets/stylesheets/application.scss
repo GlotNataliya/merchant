@@ -13,12 +13,13 @@
  *= require_tree .
  *= require_self
  */
-  @import "bootstrap";
-  @import "main";
 
-  // Configuration
-  @import "config/variables";
-  @import "config/animations";
+@import "bootstrap";
+@import "main";
 
-  // Components
-  @import "components/flash";
+// Configuration
+@import "config/variables";
+@import "config/animations";
+
+// Components
+@import "components/flash";

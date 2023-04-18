@@ -13,7 +13,7 @@
         <li class="ms-3 mt-3 h3"><b><%= product.price_cents %><%= currency_of_price(product.currency) %></b></li>
         <li class="ms-3 mt-3"><i><%= print_stock(product.stock) %></i></li>
         <li>
-          <% if current_user&.consumer? %>
+          <% if !current_user&.admin? %>
             <%= button_to order_items_path(product_id: product.id), class: "btn btn-success col-12" do %>
               Add&nbsp;to&nbsp;Cart
               <%= image_tag("icons/cart_white.png", size: "28x26", class: "ms-3") %>

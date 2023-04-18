@@ -87,24 +87,6 @@ end
 #   category_id: category1.id
 # )
 
-# fruit7 = Product.create!(
-#   title: "Avocado",
-#   price: Faker::Commerce.price,
-#   description: "1 pc",
-#   image: "avocado.jpg",
-#   stock: Faker::Number.between(from: 1, to: 100),
-#   category_id: category1.id
-# )
-
-# fruit8 = Product.create!(
-#   title: "Pineapple",
-#   price: Faker::Commerce.price,
-#   description: "1 kg",
-#   image: "pineapple.jpg",
-#   stock: Faker::Number.between(from: 1, to: 100),
-#   category_id: category1.id
-# )
-
 # juice1 = Product.create!(
 #   title: "Banana juice",
 #   price: Faker::Commerce.price,

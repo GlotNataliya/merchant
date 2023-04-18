@@ -4,6 +4,7 @@ module Admin
   class ProductsController < ApplicationController
     before_action :set_product, only: %i[edit update destroy]
     before_action :check_if_admin
+    respond_to :html, :turbo_stream
 
     def index
       @q = Product.ransack(params[:q])
@@ -19,33 +20,25 @@ module Admin
     def create
       @product = Product.new(product_params)
 
-      respond_to do |format|
-        if @product.save
-          format.html { redirect_to admin_products_url, notice: "Product was successfully created." }
-          format.turbo_stream
-        else
-          format.html { render :new, status: :unprocessable_entity }
-        end
+      if @product.save
+        respond_with @product, location: -> { admin_products_path }
+      else
+        render :new, status: :unprocessable_entity
       end
     end
 
     def update
-      respond_to do |format|
-        if @product.update(product_params)
-          format.html { redirect_to admin_products_url, notice: "Product was successfully updated." }
-        else
-          format.html { render :edit, status: :unprocessable_entity }
-        end
+      if @product.update(product_params)
+        respond_with @product, location: -> { admin_products_path }
+      else
+        render :edit, status: :unprocessable_entity
       end
     end
 
     def destroy
       @product.destroy
 
-      respond_to do |format|
-        format.html { redirect_to admin_products_url, notice: "Product was successfully destroyed." }
-        format.turbo_stream
-      end
+      respond_with @product, location: -> { admin_products_path }
     end
 
     private

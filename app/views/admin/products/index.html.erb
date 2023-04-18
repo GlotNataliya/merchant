@@ -4,7 +4,8 @@
       <div class="d-flex">
         <%= image_tag "icons/search.png", size: "38x38", class: "me-2" %>
         <%= f.search_field :title_cont, "data-action": "filter#submit", class: "form-control me-2" %>
-        <%= f.collection_select :category_id_eq, Category.all, :id, :name, { include_blank: true }, "data-action": "filter#submit", class: "form-select" %>
+        <%= f.collection_select :category_id_eq, Category.all, :id, :name, { include_blank: true },
+                                            "data-action": "filter#submit", class: "form-select" %>
       </div>
     <% end %>
   </div>

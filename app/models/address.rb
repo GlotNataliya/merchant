@@ -2,7 +2,7 @@
 
 class Address < ApplicationRecord
   belongs_to :user
-  has_many :orders
+  has_many :orders, dependent: :destroy
 
   validates :line1, :zip, presence: true
   validates :zip, numericality: { only_integer: true }, length: { maximum: 6 }

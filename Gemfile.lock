@@ -392,6 +392,7 @@ DEPENDENCIES
   ransack
   redis (~> 4.0)
   reek
+  responders
   rubocop (~> 1.42)
   rubocop-rails (~> 2.17, >= 2.17.4)
   rubocop-rspec (~> 2.16)

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ReviewsController < ApplicationController
+  respond_to :html, :turbo_stream
+
   def new
     if current_user.present?
       @review = current_user.reviews.build
@@ -12,19 +14,16 @@ class ReviewsController < ApplicationController
   def create
     @review = current_user.reviews.build(review_params)
 
-    respond_to do |format|
-      if @review.save
-        format.html { redirect_to root_path, notice: "Review was successfully created." }
-        format.turbo_stream
-      else
-        format.html { render :new, status: :unprocessable_entity }
-      end
+    if @review.save
+      respond_with @review, location: -> { root_path }
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   def update
     if @address.update(review_params)
-      redirect_to root_path, notice: "Review was successfully updated."
+      respond_with @review, location: -> { root_path }
     else
       render :edit, status: :unprocessable_entity
     end

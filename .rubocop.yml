@@ -3,6 +3,7 @@ require:
 
 AllCops:
   NewCops: enable
+  SuggestExtensions: false
 
 Style/Documentation:
   Enabled: false
@@ -22,3 +23,7 @@ Naming/RescuedExceptionsVariableName:
 
 Rails/LexicallyScopedActionFilter:
   Enabled: false
+
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/20230304124900_devise_create_users.rb'

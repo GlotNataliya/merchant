@@ -17,13 +17,11 @@
       <%= render "shared/navbar" %>
     <% end %>
 
-    <p style="color: green"><%= flash[:notice] %></p>
+    <div id="flash" class="flash">
+      <%= render "layouts/flash" %>
+    </div>
 
     <div class="product-container mx-auto">
-      <div id="flash" class="flash">
-        <%= render "layouts/flash" %>
-      </div>
-
       <%= yield %>
     </div>
 

@@ -121,3 +121,5 @@ gem "rubocop-rspec", "~> 2.16"
 gem "reek"
 
 gem "scss_lint", "~> 0.59.0"
+
+gem "responders"
