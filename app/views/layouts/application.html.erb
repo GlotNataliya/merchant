@@ -20,6 +20,10 @@
     <p style="color: green"><%= flash[:notice] %></p>
 
     <div class="product-container mx-auto">
+      <div id="flash" class="flash">
+        <%= render "layouts/flash" %>
+      </div>
+
       <%= yield %>
     </div>
 

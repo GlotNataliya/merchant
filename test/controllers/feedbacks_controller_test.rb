@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "test_helper"
 
 class FeedbacksControllerTest < ActionDispatch::IntegrationTest
@@ -17,7 +19,9 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
 
   test "should create feedback" do
     assert_difference("Feedback.count") do
-      post feedbacks_url, params: { feedback: { description: @feedback.description, email: @feedback.email, name: @feedback.name, term: @feedback.term } }
+      post feedbacks_url,
+           params: { feedback: { description: @feedback.description, email: @feedback.email, name: @feedback.name,
+                                 term: @feedback.term } }
     end
 
     assert_redirected_to feedback_url(Feedback.last)
@@ -34,7 +38,9 @@ class FeedbacksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update feedback" do
-    patch feedback_url(@feedback), params: { feedback: { description: @feedback.description, email: @feedback.email, name: @feedback.name, term: @feedback.term } }
+    patch feedback_url(@feedback),
+          params: { feedback: { description: @feedback.description, email: @feedback.email, name: @feedback.name,
+                                term: @feedback.term } }
     assert_redirected_to feedback_url(@feedback)
   end
 

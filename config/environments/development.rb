@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  ENV['GOOGLE_OAUTH_CLIENT_ID'] = Rails.application.credentials.dig(:google_oauth_client_id)
+  ENV["GOOGLE_OAUTH_CLIENT_ID"] = Rails.application.credentials[:google_oauth_client_id]
 
-  ENV['GOOGLE_OAUTH_CLIENT_SECRET'] = Rails.application.credentials.dig(:google_oauth_client_secret)
+  ENV["GOOGLE_OAUTH_CLIENT_SECRET"] = Rails.application.credentials[:google_oauth_client_secret]
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time
@@ -40,7 +42,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.default_url_options = { host: 'https://localhost:3000' }
+  config.action_mailer.default_url_options = { host: "https://localhost:3000" }
   # config.action_mailer.delivery_method = :smtp
 
   # config.action_mailer.smtp_settings = {

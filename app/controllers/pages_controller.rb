@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class PagesController < ApplicationController
-  before_action :set_order_items, only: %i[ about contact delivery payment personal_account blog]
+  before_action :set_order_items, only: %i[about contact delivery payment personal_account blog]
 
   def about; end
 

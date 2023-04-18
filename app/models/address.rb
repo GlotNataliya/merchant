@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Address < ApplicationRecord
   belongs_to :user
   has_many :orders
@@ -11,7 +13,7 @@ class Address < ApplicationRecord
   validates :city, presence: { if: ->(record) { record.cities.present? } }
 
   def to_s
-    [country_label, city, line1, line2, state, zip].select(&:present?).join(', ')
+    [country_label, city, line1, line2, state, zip].select(&:present?).join(", ")
   end
 
   def countries

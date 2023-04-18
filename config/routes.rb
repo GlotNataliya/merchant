@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-    omniauth_callbacks: 'users/omniauth_callbacks',
-    sessions: 'users/sessions',
-    registrations: 'users/registrations'
+    omniauth_callbacks: "users/omniauth_callbacks",
+    sessions: "users/sessions",
+    registrations: "users/registrations"
   }
 
   namespace :admin do
@@ -24,14 +26,14 @@ Rails.application.routes.draw do
   end
   resources :products, only: %i[index show]
   resources :feedbacks, only: %i[new create]
-  get '/feedbacks', to: 'feedbacks#new', as: 'feedback'
+  get "/feedbacks", to: "feedbacks#new", as: "feedback"
 
-  get 'pages/about', to: 'pages#about', as: 'about'
-  get 'pages/contact', to: 'pages#contact', as: 'contact'
-  get 'pages/delivery', to: 'pages#delivery', as: 'delivery'
-  get 'pages/payment', to: 'pages#payment', as: 'payment'
-  get 'pages/personal_account', to: 'pages#personal_account', as: 'account'
-  get 'pages/blog', to: 'pages#blog', as: 'blog'
+  get "pages/about", to: "pages#about", as: "about"
+  get "pages/contact", to: "pages#contact", as: "contact"
+  get "pages/delivery", to: "pages#delivery", as: "delivery"
+  get "pages/payment", to: "pages#payment", as: "payment"
+  get "pages/personal_account", to: "pages#personal_account", as: "account"
+  get "pages/blog", to: "pages#blog", as: "blog"
 
   post "checkout/create", to: "checkout#create"
   resources :webhooks, only: [:create]

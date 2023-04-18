@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -40,7 +42,7 @@ gem "redis", "~> 4.0"
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -53,7 +55,7 @@ gem "bootsnap", require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "debug", platforms: %i[mri mingw x64_mingw]
   gem "pry-rails"
 end
 
@@ -84,28 +86,38 @@ gem "omniauth"
 gem "omniauth-google-oauth2"
 gem "omniauth-rails_csrf_protection"
 
-gem 'bootstrap'
+gem "bootstrap"
 
 gem "enumerize", "~> 2.5", ">= 2.5.0"
 
-gem 'mail_form'
+gem "mail_form"
 
-gem 'unsplash_image'
+gem "unsplash_image"
 
 gem "strong_migrations", "~> 1.4"
 
 # gem 'country_select', '~> 8.0', '>= 8.0.1'
 
-gem 'city-state', '~> 0.1.0'
+gem "city-state", "~> 0.1.0"
 
-gem 'file_exists', '~> 0.2.0'
+gem "file_exists", "~> 0.2.0"
 
-gem 'stripe'
+gem "stripe"
 
 gem "carrierwave", ">= 3.0.0.beta", "< 4.0"
 
 gem "mini_magick"
 
-gem 'money-rails'
+gem "money-rails"
 
-gem 'ransack'
+gem "ransack"
+
+gem "rubocop", "~> 1.42"
+
+gem "rubocop-rails", "~> 2.17", ">= 2.17.4"
+
+gem "rubocop-rspec", "~> 2.16"
+
+gem "reek"
+
+gem "scss_lint", "~> 0.59.0"

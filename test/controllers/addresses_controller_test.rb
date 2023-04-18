@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "test_helper"
 
 class AddressesControllerTest < ActionDispatch::IntegrationTest
@@ -17,7 +19,9 @@ class AddressesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create address" do
     assert_difference("Address.count") do
-      post addresses_url, params: { address: { city: @address.city, line1: @address.line1, line2: @address.line2, state: @address.state, user_id: @address.user_id, zip: @address.zip } }
+      post addresses_url,
+           params: { address: { city: @address.city, line1: @address.line1, line2: @address.line2, state: @address.state,
+                                user_id: @address.user_id, zip: @address.zip } }
     end
 
     assert_redirected_to address_url(Address.last)
@@ -34,7 +38,9 @@ class AddressesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update address" do
-    patch address_url(@address), params: { address: { city: @address.city, line1: @address.line1, line2: @address.line2, state: @address.state, user_id: @address.user_id, zip: @address.zip } }
+    patch address_url(@address),
+          params: { address: { city: @address.city, line1: @address.line1, line2: @address.line2, state: @address.state,
+                               user_id: @address.user_id, zip: @address.zip } }
     assert_redirected_to address_url(@address)
   end
 

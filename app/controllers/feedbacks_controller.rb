@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FeedbacksController < ApplicationController
   def new
     @feedback = Feedback.new
@@ -7,10 +9,10 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new(params[:feedback])
     @feedback.request = request
     if @feedback.deliver
-      flash.now[:success] = 'Message sent!'
+      flash.now[:success] = "Message sent!"
       redirect_to root_path
     else
-      flash.now[:error] = 'Could not send message'
+      flash.now[:error] = "Could not send message"
       render :new, status: :unprocessable_entity
     end
   end

@@ -1,6 +1,7 @@
-<p style="color: green"><%= notice %></p>
+
 
 <div class="d-flex justify-content-between mt-5">
+  <p style="color: green"><%= flash[:notice] %></p>
   <h2>Delivery Addresses</h2>
   <div>
     <%= link_to "+ Add new Address", new_address_path, class: "btn btn-dark",

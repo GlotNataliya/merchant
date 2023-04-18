@@ -1,2 +1,3 @@
 <%= turbo_stream.prepend :addresses, @address %>
 <%= turbo_stream.update "new_address" %>
+<%= render_turbo_stream_flash_messages %>

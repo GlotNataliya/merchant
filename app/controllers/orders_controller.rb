@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class OrdersController < ApplicationController
-  before_action :set_order, only: %i[ edit update destroy confirm]
+  before_action :set_order, only: %i[edit update destroy confirm]
   before_action :authenticate_user!
 
   def index
@@ -18,8 +20,7 @@ class OrdersController < ApplicationController
     @order = current_user.orders.build
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @order = current_user.orders.build(order_params)
@@ -32,8 +33,8 @@ class OrdersController < ApplicationController
   end
 
   def update
-    if @order.update(order_params.merge(status: 'submitted'))
-      #session[:order_id] = nil
+    if @order.update(order_params.merge(status: "submitted"))
+      # session[:order_id] = nil
       redirect_to confirm_order_path(@order)
     else
       render :edit, status: :unprocessable_entity
@@ -50,11 +51,11 @@ class OrdersController < ApplicationController
 
   private
 
-    def set_order
-      @order = current_user.orders.find(params[:id])
-    end
+  def set_order
+    @order = current_user.orders.find(params[:id])
+  end
 
-    def order_params
-      params.require(:order).permit(:user_id, :status, :address_id)
-    end
+  def order_params
+    params.require(:order).permit(:user_id, :status, :address_id)
+  end
 end

@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module Admin
   class ProductsController < ApplicationController
-    before_action :set_product, only: %i[ edit update destroy ]
+    before_action :set_product, only: %i[edit update destroy]
     before_action :check_if_admin
 
     def index
@@ -12,8 +14,7 @@ module Admin
       @product = Product.new
     end
 
-    def edit
-    end
+    def edit; end
 
     def create
       @product = Product.new(product_params)
@@ -54,7 +55,8 @@ module Admin
     end
 
     def product_params
-      params.require(:product).permit(:title, :price, :price_cents, :description, :image, :currency, :stock, :category_id)
+      params.require(:product).permit(:title, :price, :price_cents, :description, :image, :currency, :stock,
+                                      :category_id)
     end
 
     def check_if_admin

@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module Admin
   class CategoriesController < ApplicationController
-    before_action :set_category, only: %i[ edit update destroy ]
+    before_action :set_category, only: %i[edit update destroy]
     before_action :check_if_admin
 
     def index
@@ -11,8 +13,7 @@ module Admin
       @category = Category.new
     end
 
-    def edit
-    end
+    def edit; end
 
     def create
       @category = Category.new(category_params)
