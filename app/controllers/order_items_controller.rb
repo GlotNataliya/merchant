@@ -61,7 +61,7 @@ class OrderItemsController < ApplicationController
 
   def find_or_initialize_order
     @order = current_user.orders.last ||
-    Order.find_or_initialize_by(id: session[:order_id], user_id: current_user.id, status: "unsubmitted")
+             Order.find_or_initialize_by(id: session[:order_id], user_id: current_user.id, status: "unsubmitted")
 
     return unless @order.new_record?
 
