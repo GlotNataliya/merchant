@@ -6,6 +6,6 @@ class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy
 
   def total
-    order_items.map(&:subtotal).compact.sum
+    order_items.map(&:subtotal).compact.inject(:+)
   end
 end

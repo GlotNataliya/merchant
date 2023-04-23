@@ -83,6 +83,7 @@ gem "faker"
 
 gem "devise"
 gem "omniauth"
+gem "omniauth-github"
 gem "omniauth-google-oauth2"
 gem "omniauth-rails_csrf_protection"
 
@@ -123,3 +124,5 @@ gem "reek"
 gem "scss_lint", "~> 0.59.0"
 
 gem "responders"
+
+gem "table_print", "~> 1.5", group: :development

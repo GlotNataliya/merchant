@@ -6,6 +6,10 @@ Rails.application.configure do
   ENV["GOOGLE_OAUTH_CLIENT_ID"] = Rails.application.credentials[:google_oauth_client_id]
 
   ENV["GOOGLE_OAUTH_CLIENT_SECRET"] = Rails.application.credentials[:google_oauth_client_secret]
+
+  ENV["APP_ID"] = Rails.application.credentials[:github_outh_app_id]
+
+  ENV["APP_SECRET"] = Rails.application.credentials[:github_oauth_app_secret]
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time

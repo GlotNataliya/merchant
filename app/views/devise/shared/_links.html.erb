@@ -19,14 +19,23 @@
 <% end %>
 
 <%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
+  <%- resource_class.omniauth_providers[0] %>
     <div class="text-center mt-3">
       <%= form_for "Login",
-        url: omniauth_authorize_path(resource_name, provider),
+        url: omniauth_authorize_path(resource_name, 'google_oauth2'),
         method: :post,
         data: {turbo: "false"} do |f| %>
           <%= f.submit "Login", type: "image", src: url_for("/assets/btns_google_sing_in/btn_google_signin_dark_normal_web.png") %>
       <% end %>
     </div>
-  <% end %>
+  <%- resource_class.omniauth_providers[1] %>
+    <div class="text-center mt-3">
+      <%= form_for "Login",
+        url: omniauth_authorize_path(resource_name, 'github'),
+        method: :post,
+        data: {turbo: "false"} do |f| %>
+          <%= image_tag("icons/github.svg", size: "24x24") %>
+          <%= f.submit "Github", class: "btn btn-dark col-5" %>
+      <% end %>
+    </div>
 <% end %>
