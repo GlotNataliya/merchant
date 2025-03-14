@@ -4,7 +4,7 @@ class Product < ApplicationRecord
   belongs_to :category
   has_many :order_items, dependent: :destroy
 
-  validates :stock, :title, :price, :description, :image_url, presence: true
+  validates :stock, :title, :price, :description, :image, presence: true
 
   validates :price, numericality: true
   validates :stock, numericality: { only_integer: true, greater_than_or_equal_to: 0 }

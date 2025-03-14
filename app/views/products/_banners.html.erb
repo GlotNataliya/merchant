@@ -1,13 +1,13 @@
 <div class="row mt-5">
   <div class="d-flex gap-3">
     <div class="col  border border-light">
-      <%= image_tag unsplash_image_url(size: '690x345', tags: 'desserts') %>
+      <%= image_tag "#{@photo_desserts.urls['raw']}&w=690&h=345&fit=crop&crop=entropy" %>
       <h3 class=" mb-3 mt-3">
         <%= link_to "Cakes, desserts, sweet pastries", "#", class: "text-decoration-none link-dark" %>
       </h3>
     </div>
     <div class="col border border-light">
-      <%= image_tag unsplash_image_url(size: '690x345', tags: 'seafood') %>
+      <%= image_tag "#{@photo_seafood.urls['raw']}&w=690&h=345&fit=crop&crop=entropy" %>
       <h3 class=" mb-3 mt-3">
         <%= link_to "Fish, caviar, seafood", "#", class: "text-decoration-none link-dark" %>
       </h3>
@@ -18,19 +18,19 @@
 <div class="row mt-5">
   <div class="d-flex gap-3 border border-light">
     <div class="col">
-      <%= image_tag unsplash_image_url(size: '451x225', tags: 'Fresh vegetables')  %>
+      <%= image_tag "#{@photo_fresh_vegetables.urls['raw']}&w=451&h=225&fit=crop&crop=entropy" %>
       <h3 class=" mb-3 mt-3">
         <%= link_to "Vegetables", "#", class: "text-decoration-none link-dark" %>
       </h3>
     </div>
     <div class="col">
-      <%= image_tag unsplash_image_url(size: '451x225', tags: 'berries') %>
+      <%= image_tag "#{@photo_berries.urls['raw']}&w=451&h=225&fit=crop&crop=entropy" %>
       <h3 class=" mb-3 mt-3">
         <%= link_to "Berries", "#", class: "text-decoration-none link-dark" %>
       </h3>
     </div>
     <div class="col">
-      <%= image_tag unsplash_image_url(size: '451x225', tags: 'meat') %>
+      <%= image_tag "#{@photo_meat.urls['raw']}&w=451&h=225&fit=crop&crop=entropy" %>
       <h3 class=" mb-3 mt-3">
         <%= link_to "Fresh meat products", "#", class: "text-decoration-none link-dark" %>
       </h3>
@@ -39,7 +39,7 @@
 </div>
 
 <div class="row mt-5 position-relative">
-  <%= image_tag unsplash_image_url(size: "1408x318", tags: 'homemade baking') %>
+  <%= image_tag "#{@photo_homemade_baking.urls['raw']}&w=1408&h=318&fit=crop&crop=entropy" %>
   <div class="position-absolute p-5 m-3">
     <h2 class="text-white"><b>Title</b></h2>
     <p class="h4 mt-4 text-white">Handmade sweet masterpieces according to the recipes of our Pastry Chef. Individual desserts,

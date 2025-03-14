@@ -56,7 +56,6 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri mingw x64_mingw]
-  gem "pry-rails"
 end
 
 group :development do
@@ -94,10 +93,11 @@ gem "enumerize", "~> 2.5", ">= 2.5.0"
 gem "mail_form"
 
 gem "unsplash_image"
+gem 'unsplash'
 
 gem "strong_migrations", "~> 1.4"
 
-# gem 'country_select', '~> 8.0', '>= 8.0.1'
+# gem 'country_select', '~> 8.0', '>= 10.0.1'
 
 gem "city-state", "~> 0.1.0"
 

@@ -36,4 +36,5 @@
 /config/master.key
 /config/credentials.yml.enc
 
-.env
+# Ignore all environment files.
+/.env*

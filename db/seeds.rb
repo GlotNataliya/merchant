@@ -100,7 +100,7 @@ end
 #   title: "Grapefruit juice",
 #   price: Faker::Commerce.price,
 #   description: "1 liter",
-#   imag: "Grapefruit_juice.jpg",
+#   image: "Grapefruit_juice.jpg",
 #   stock: Faker::Number.between(from: 1, to: 100),
 #   category_id: category2.id
 # )

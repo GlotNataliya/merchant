@@ -2,19 +2,19 @@
   <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active image-size mt-3">
-        <%= image_tag unsplash_image_url(size: '1400x810', tags: 'food') %>
+        <%= image_tag "#{@photo_carousel_food.urls['raw']}&w=1400&h=810&fit=crop&crop=entropy" %>
         <div class="carousel-caption d-none d-md-block">
           <h1 class="carousel-products">High quality premium products</h1>
         </div>
       </div>
       <div class="carousel-item image-size mt-3">
-        <%= image_tag unsplash_image_url(size: '1400x810', tags: 'delivery') %>
+        <%= image_tag "#{@photo_carousel_delivery.urls['raw']}&w=1400&h=810&fit=crop&crop=entropy" %>
         <div class="carousel-caption d-none d-md-block">
           <h1 class="carousel-products">Fast delivery</h1>
         </div>
       </div>
       <div class="carousel-item image-size mt-3">
-        <%= image_tag unsplash_image_url(size: '1400x810', tags: 'payment') %>
+        <%= image_tag "#{@photo_carousel_payment.urls['raw']}&w=1400&h=810&fit=crop&crop=entropy" %>
         <div class="carousel-caption d-none d-md-block">
           <h1 class="carousel-products">Convenient payment</h1>
         </div>
