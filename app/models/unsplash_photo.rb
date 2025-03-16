@@ -1,0 +1,2 @@
+class UnsplashPhoto < ApplicationRecord
+end

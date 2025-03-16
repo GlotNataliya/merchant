@@ -1,26 +1,12 @@
-# frozen_string_literal: true
-
 class ProductsController < ApplicationController
   def index
     @order = current_user.orders.last if current_user.present?
 
     @order_items = @order&.order_items
 
-    @photo_fruits_and_vegetables = Unsplash::Photo.random(query: "fruits and vegetables")
-    @photo_cuisine = Unsplash::Photo.random(query: "cuisine")
-    @photo_coffee = Unsplash::Photo.random(query: "coffee")
-    @photo_pastries = Unsplash::Photo.random(query: "pastries")
+    @topic_images = {}
 
-    @photo_carousel_food = Unsplash::Photo.random(query: "food")
-    @photo_carousel_delivery = Unsplash::Photo.random(query: "delivery")
-    @photo_carousel_payment = Unsplash::Photo.random(query: "payment")
-
-    @photo_desserts = Unsplash::Photo.random(query: "desserts")
-    @photo_seafood = Unsplash::Photo.random(query: "seafood")
-    @photo_fresh_vegetables = Unsplash::Photo.random(query: "Fresh vegetables")
-    @photo_berries = Unsplash::Photo.random(query: "berries")
-    @photo_meat = Unsplash::Photo.random(query: "meat")
-    @photo_homemade_baking = Unsplash::Photo.random(query: "homemade baking")
+    getting_unsplash_photos
 
     suggestions_categories_of_products_feedback_and_review
   end
@@ -34,5 +20,33 @@ class ProductsController < ApplicationController
     @nuts = products.includes(:category).where(categories: { name: "Nuts" })
     @feedback = Feedback.new
     @reviews = Review.all
+  end
+
+  def getting_unsplash_photos
+    UnsplashService::TOPICS.each do |topic|
+      @topic_images[topic] = UnsplashService.random_image(topic)
+
+      size_for_photo_news = "&w=328&h=328&fit=crop&crop=entropy"
+      @photo_fruits_and_vegetables = @topic_images[topic] + size_for_photo_news if topic == "fruits and vegetables"
+      @photo_cuisine = @topic_images[topic] + size_for_photo_news if topic == "cuisine"
+      @photo_coffee = @topic_images[topic] + size_for_photo_news if topic == "coffee"
+      @photo_pastries = @topic_images[topic] + size_for_photo_news if topic == "pastries"
+
+      size_for_photo_carousel = "&w=1400&h=810&fit=crop&crop=entropy"
+      @photo_carousel_food = @topic_images[topic] + size_for_photo_carousel if topic == "food"
+      @photo_carousel_delivery = @topic_images[topic] + size_for_photo_carousel if topic == "delivery"
+      @photo_carousel_payment = @topic_images[topic] + size_for_photo_carousel if topic == "payment"
+
+      size_for_photo_banners_1 = "&w=690&h=345&fit=crop&crop=entropy"
+      @photo_desserts = @topic_images[topic] + size_for_photo_banners_1 if topic == "desserts"
+      @photo_seafood = @topic_images[topic] + size_for_photo_banners_1 if topic == "seafood"
+
+      size_for_photo_banners_2 = "&w=451&h=225&fit=crop&crop=entropy"
+      @photo_fresh_vegetables = @topic_images[topic] + size_for_photo_banners_2 if topic == "Fresh vegetables"
+      @photo_berries = @topic_images[topic] + size_for_photo_banners_2 if topic == "berries"
+      @photo_meat = @topic_images[topic] + size_for_photo_banners_2 if topic == "meat"
+
+      @photo_homemade_baking = @topic_images[topic] + "&w=1408&h=318&fit=crop&crop=entropy" if topic == "homemade baking"
+    end
   end
 end

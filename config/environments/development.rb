@@ -4,12 +4,11 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   ENV["GOOGLE_OAUTH_CLIENT_ID"] = Rails.application.credentials[:google_oauth_client_id]
-
   ENV["GOOGLE_OAUTH_CLIENT_SECRET"] = Rails.application.credentials[:google_oauth_client_secret]
 
-  ENV["APP_ID"] = Rails.application.credentials[:github_outh_app_id]
+  ENV["GITHUB_CLIENT_ID"] = Rails.application.credentials[:github_outh_app_id]
+  ENV["GITHUB_CLIENT_SECRET"] = Rails.application.credentials[:github_oauth_app_secret]
 
-  ENV["APP_SECRET"] = Rails.application.credentials[:github_oauth_app_secret]
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time
@@ -46,7 +45,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.default_url_options = { host: "https://localhost:3000" }
+  config.action_mailer.default_url_options = { host: "http://localhost:3000" }
   # config.action_mailer.delivery_method = :smtp
 
   # config.action_mailer.smtp_settings = {
@@ -91,4 +90,5 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+  config.active_job.queue_adapter = :async
 end

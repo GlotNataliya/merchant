@@ -7,6 +7,7 @@ module Users
         data = request.env["omniauth.auth"]["info"]
         @user = User.find_by(email: data["email"])
         @user ||= User.create(
+          full_name: data["name"],
           email: data["email"],
           password: Devise.friendly_token[0, 20],
           uid: request.env["omniauth.auth"]["uid"],

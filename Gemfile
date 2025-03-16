@@ -34,6 +34,7 @@ gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
+gem 'hiredis'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -92,7 +93,6 @@ gem "enumerize", "~> 2.5", ">= 2.5.0"
 
 gem "mail_form"
 
-gem "unsplash_image"
 gem 'unsplash'
 
 gem "strong_migrations", "~> 1.4"

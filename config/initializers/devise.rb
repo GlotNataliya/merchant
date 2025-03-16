@@ -27,11 +27,12 @@ Devise.setup do |config|
   # with default "from" parameter.
   config.mailer_sender = "merchant@example.com"
   config.omniauth :google_oauth2,
-                  Rails.application.credentials[:google_oauth_client_id],
-                  Rails.application.credentials[:google_oauth_client_secret]
+                  ENV['GOOGLE_OAUTH_CLIENT_ID'],
+                  ENV['GOOGLE_OAUTH_CLIENT_SECRET'],
+                  redirect_uri: 'http://127.0.0.1:3000/users/auth/google_oauth2/callback'
   config.omniauth :github,
-                  Rails.application.credentials[:github_outh_app_id],
-                  Rails.application.credentials[:github_oauth_app_secret], scope: "user"
+                  ENV['GITHUB_CLIENT_ID'],
+                  ENV['GITHUB_CLIENT_SECRET']
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
